@@ -2,13 +2,17 @@
 	"users":[
 		{
 			"id":1,
-			"name":"kobe",
-			"age":20
-		},
+			"name":"vin",
+			"age":24
+		}
+	],
+	"articles":[
 		{
-			"id":2,
-			"name":"james",
-			"age":22
+			"id":1,
+			"type":"技术",
+			"title":"json-server快速“伪造”后台接口",
+			"date":"2018-6-25",
+			"details":"<div>新建项目 mkdir rest-api-demo && cd rest-api-demo</div>"
 		}
 	]
 }

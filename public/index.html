@@ -5,26 +5,35 @@
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>APP</title>
-    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
   </head>
   <body>
     <div id="app">
     	<ul>
-    		<li v-for="item in list" :key="item.id">{{item.id}} {{item.name}}</li>
+    		<li v-for="item in list" :key="item.id" :data-id="item.id">
+                <h4 v-text="item.title"></h4>
+                <p>类型：{{item.type}}</p> 
+                <p>时间：{{item.date}}</p> 
+                <div v-html="item.details"></div></li>
     	</ul>
     </div>
     <script>
     	new Vue({
     		el:"#app",
     		data:{
-    			host:'http://localhost:9999',
+    			host:'http://116.196.125.109:9999',
     			list:[]
     		},
+            filters: {  
+
+            },
     		methods:{
+
+                //请求数据函数
     			getData(){
     				var _this = this;
-    				axios.get(this.host+'/users').then(function(res){
+    				axios.get(this.host+'/articles').then(function(res){
 					  	_this.list = res.data;
 					}).catch(function(err){
 					  	console.log(err);
@@ -32,6 +41,8 @@
     			}
     		},
     		created(){
+
+                //执行请求数据
     			this.getData();
     		}
     	})
